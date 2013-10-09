@@ -1,4 +1,16 @@
-﻿module mysql.db;
+/++
+A vibe.d based connection pool.
+
+This module requires vibe.d.
+
+See_Also: $(LINK http://vibed.org)
+
+Copyright: Copyright 2011-2013
+License:   $(LINK www.boost.org/LICENSE_1_0.txt, Boost License 1.0).
+Authors:   Steve Teale, James W. Oliphant, simendsjo, Sönke Ludwig, sshamov,
+           Nick Sabalausky
++/
+module mysql.db;
 
 public import mysql.connection;
 import std.conv;
@@ -7,6 +19,9 @@ version(Have_vibe_d)
 {
     import vibe.core.connectionpool;
 
+    /++
+    A vibe.d based connection pool
+    +/
     class MysqlDB {
        private {
           string m_host;
@@ -45,6 +60,7 @@ version(Have_vibe_d)
 }
 else
 {
+    /// ditto
     class MysqlDB() {
         static assert(false,
             "The 'mysql.db.MysqlDB' connection pool requires Vibe.d and therefore "~
