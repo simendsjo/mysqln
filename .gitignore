@@ -1,0 +1,19 @@
+##################
+# Compiled files #
+##################
+.dub
+__dummy.html
+docs.json
+# Binary for integration tests
+mysql-native
+
+#######
+# VIM #
+#######
+*.swp
+*.un~
+
+#######################################
+# Simendsjos dev makefile for vim+dub #
+#######################################
+makefile
