@@ -535,17 +535,17 @@ Params:
     IsInt24 = true if source should be converted to a MySQL 24-bit int
     dest    = destination for the converted value
 +/
-void encodeIntoAndSkip(T)(in T[] source, ref ubyte[] dest) pure nothrow
-{
-    source.encodeInto(dest);
-    dest.skip(source.length);
-}
-
-/// ditto
 void encodeIntoAndSkip(T, bool IsInt24 = false)(in T source, ref ubyte[] dest) pure nothrow
 {
     source.encodeInto(dest);
     dest.skip(source.sizeof);
+}
+
+/// ditto
+void encodeIntoAndSkip(T)(in T[] source, ref ubyte[] dest) pure nothrow
+{
+    source.encodeInto(dest);
+    dest.skip(source.length);
 }
 
 /// DOCUMENT ME!!!!

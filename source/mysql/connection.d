@@ -150,15 +150,11 @@ public:
     be attempted.
 
     Params:
-       socketType = Whether to use a Phobos or Vibe.d socket. Default is
-                    Phobos, unless -version=Have_vibe_d is used.
-       openSocket = Optional callback which should return a newly-opened
-                    Phobos or Vibe.d TCP socket. This allows custom sockets
-                    to be used, subclassed from Phobos's or Vibe.d's sockets.
        host       = An IP address in numeric dotted form, or as a host  name.
        user       = The user name to authenticate.
-       password   = Users password.
+       pwd        = Users password.
        db         = Desired initial database.
+       port       = Port
        capFlags   = The set of flag bits from the server's capabilities that
                     the client requires
     +/
@@ -239,12 +235,6 @@ public:
         The connection string needs work to allow for semicolons in its parts!
 
     Params:
-        socketType = Whether to use a Phobos or Vibe.d socket. Default is
-                     Phobos, unless -version=Have_vibe_d is used.
-        openSocket = Optional callback which should return a newly-opened
-                     Phobos or Vibe.d TCP socket. This allows custom sockets
-                     to be used, subclassed from Phobos's or Vibe.d's
-                     sockets.
         cs         = A connection string of the form
                      "host=localhost;user=user;pwd=password;db=mysqld"
         capFlags   = The set of flag bits from the server's capabilities that

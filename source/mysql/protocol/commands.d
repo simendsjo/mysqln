@@ -141,7 +141,7 @@ See_Also: $(LINK http://dev.mysql.com/doc/internals/en/com-init-db.html, COM_INI
 +/
 struct ComInitDB
 {
-    /// Change default schema
+   /// Change default schema
     static void exec(Connection cn, in string db)
     {
         scope(exit) cn.resetPacket();

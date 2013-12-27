@@ -2,6 +2,7 @@
 # Compiled files #
 ##################
 .dub
+docs/
 __dummy.html
 docs.json
 # Binary for integration tests
