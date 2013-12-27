@@ -398,7 +398,7 @@ private:
                 }
                 assert(!lci.isNull);
                 assert(!lci.isIncomplete);
-                _values[i] = packet.consume!string(lci.value);
+                _values[i] = packet.consume!string(cast(size_t)lci.value);
                 if(columns[i].type == SQLType.TINY && columns[i].length == 1)
                     _values[i] = (_values[i] == "1" ? "true" : "false");
             }
@@ -585,7 +585,9 @@ Params:
 ColumnDefinition[] readColumnDefinitions(Connection cn, long num,
         ref short numWarnings)
 {
-    auto columns = minimallyInitializedArray!(ColumnDefinition[])(num);
+    assert(num <= size_t.max);
+    assert(num >= size_t.min);
+    auto columns = minimallyInitializedArray!(ColumnDefinition[])(cast(size_t)num);
     if(columns.length)
     {
         foreach (size_t i; 0..columns.length)

@@ -680,7 +680,7 @@ public:
             auto lci = packet.consumeIfComplete!LCI();
             assert(!lci.isNull);
             assert(!lci.isIncomplete);
-            _defaultValues = cast(string)packet.consume(lci.value);
+            _defaultValues = cast(string)packet.consume(cast(size_t)lci.value);
         }
     }
 
