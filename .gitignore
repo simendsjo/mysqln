@@ -7,6 +7,8 @@ __dummy.html
 docs.json
 # Binary for integration tests
 mysql-native
+# Code coverage
+source-*.lst
 
 #######
 # VIM #
