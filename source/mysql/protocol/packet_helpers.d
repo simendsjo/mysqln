@@ -692,6 +692,25 @@ SQLValue consumeIfComplete()(ref ubyte[] packet, SQLType sqlType, bool binary, b
             return packet.consumeIfComplete!Date(binary, unsigned);
         case SQLType.DATETIME:
             return packet.consumeIfComplete!DateTime(binary, unsigned);
+        case SQLType.JSON:
+            version(Have_vibe_d)
+            {
+                static if(__traits(compiles, (){ import vibe.data.json : parseJsonString; } ))
+                {
+                    import vibe.data.json : parseJsonString;
+
+                    SQLValue asString = packet.consumeIfComplete!string(false, unsigned);
+                    assert(!asString.isIncomplete);
+
+                    SQLValue result;
+                    result.isIncomplete = false;
+                    result.isNull = asString.isNull;
+                    result.value = parseJsonString(asString.value.to!string);
+
+                    return result;
+                }
+            }
+            // Else parse it as a string
         case SQLType.VARCHAR:
         case SQLType.ENUM:
         case SQLType.SET:
